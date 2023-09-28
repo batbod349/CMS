@@ -1,0 +1,15 @@
+.Wrapper
+{
+    width: 1000px;
+}
+
+ul
+{
+    list-style: none;
+}
+
+li
+{
+    display: inline;
+
+}
