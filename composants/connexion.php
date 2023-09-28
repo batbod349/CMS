@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input class="form-control" type="password" id="mdp" name="password" placeholder="Mot de passe" aria-label="Mot de passe" aria-describedby="addon-wrapping" required><br>
             </div>
 
-            <input type="submit" class="item btn btn-secondary btn-lg" value="Se connecter">
+            <input type="submit" class="item btn btn-secondary btn-lg" value="Connexion">
         </form>
     </div>
 </body>
