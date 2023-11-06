@@ -1,3 +1,36 @@
+<?php
+// Assurez-vous que le fichier de connexion à la base de données est inclus ici
+include('C:\laragon\www\CMS\sql\ConnectionSQL.php');
+
+// Vérifie si le formulaire a été soumis
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Récupérez les données du formulaire
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $passwordConfirm = $_POST['passwordConfirm'];
+
+    // Vérifiez si les mots de passe correspondent
+    if ($password !== $passwordConfirm) {
+        $error_message = "Les mots de passe ne correspondent pas.";
+    } else {
+        // Hachez le mot de passe avant de le stocker en toute sécurité dans la base de données
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        // Insérez l'utilisateur dans la base de données
+        $query = $db->prepare("INSERT INTO users (email, password) VALUES (:email, :password)");
+        $query->bindParam(':email', $username);
+        $query->bindParam(':password', $hashed_password);
+
+        if ($query->execute()) {
+            // L'inscription a réussi, redirigez l'utilisateur vers une page de confirmation ou de connexion
+            header('Location: confirmation.php'); // Remplacez 'confirmation.php' par l'URL de votre choix
+            exit();
+        } else {
+            $error_message = "Une erreur s'est produite lors de l'inscription.";
+        }
+    }
+}
+?>
 
 <!DOCTYPE html>
 <html>
