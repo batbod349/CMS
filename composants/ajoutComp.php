@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
-    <!-- Le contenu de votre page -->
+    <!-- Le contenu de votre page dvdvd -->
+    
 </body>
 </html>
