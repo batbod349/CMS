@@ -7,7 +7,5 @@
 </head>
 <body>
     <!-- Le contenu de votre page -->
-    <?php require '../composants/ajoutComp.php'; ?>
-
 </body>
 </html>
