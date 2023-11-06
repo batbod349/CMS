@@ -1,6 +1,17 @@
 <?php
-// Inclure la configuration de la base de données ici
-// Vous devez configurer la connexion à votre base de données dans config.php
+// Informations de connexion à la base de données
+$host = "localhost"; // Nom d'hôte du serveur MySQL
+$username = "root"; // Nom d'utilisateur MySQL
+$password = ""; // Mot de passe MySQL
+$database = "cmd"; // Nom de la base de données
+
+// Connexion à la base de données
+$connection = mysqli_connect($host, $username, $password, $database);
+
+// Vérifier la connexion
+if (!$connection) {
+    die("La connexion à la base de données a échoué : " . mysqli_connect_error());
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les données du formulaire
@@ -87,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Fonction pour vérifier l'authentification (exemple simplifié, adaptez-la à vos besoins)
 function verifyAuthentication($username, $password) {
     // Inclure le fichier de configuration de la base de données
-    include("includes/config.php");
+    include("sql/ConnectionSQL.php");
 
     // Vous devez écrire la logique d'authentification ici
     // Par exemple, exécutez une requête SQL pour vérifier si l'utilisateur existe dans la base de données et si le mot de passe est correct
