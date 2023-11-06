@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
+    <script>
+  tinymce.init({
+    selector: '#editor', // Sélectionnez l'ID de votre textarea
+    height: 400, // Hauteur de la zone d'édition
+    plugins: 'link image code', // Les plugins que vous souhaitez activer
+    toolbar: 'undo redo | bold italic | link image | code', // Les boutons de la barre d'outils
+  });
+</script>
     <style>
         /* Style pour le formulaire */
         form {
@@ -51,7 +60,7 @@
         <input type="text" id="title" name="title" required>
 
         <label for="content">La partie édition du site:</label>
-        <textarea id="content" name="content" required></textarea>
+        <textarea id="editor" name="content"></textarea>
 
         <label for="photo">Télécharger une photo:</label>
         <input type="file" id="photo" name="photo" accept="image/*" required>
