@@ -5,7 +5,7 @@ include('C:\laragon\www\CMS\sql\ConnectionSQL.php');
 // Vérifie si le formulaire a été soumis
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Récupérez les données du formulaire
-    $username = $_POST['username'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
     $passwordConfirm = $_POST['passwordConfirm'];
 
@@ -18,12 +18,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Insérez l'utilisateur dans la base de données
         $query = $db->prepare("INSERT INTO users (email, password) VALUES (:email, :password)");
-        $query->bindParam(':email', $username);
+        $query->bindParam(':email', $email);
         $query->bindParam(':password', $hashed_password);
 
         if ($query->execute()) {
             // L'inscription a réussi, redirigez l'utilisateur vers une page de confirmation ou de connexion
-            header('Location: confirmation.php'); // Remplacez 'confirmation.php' par l'URL de votre choix
+            header('C:\laragon\www\CMS\pages\accueil.php');
             exit();
         } else {
             $error_message = "Une erreur s'est produite lors de l'inscription.";
@@ -68,6 +68,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             padding: 10px;
         }
     </style>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const inscriptionForm = document.getElementById('inscriptionForm');
+
+        inscriptionForm.addEventListener('submit', function(event) {
+        // Empêcher l'envoi du formulaire par défaut
+        event.preventDefault();
+
+        // Masquer la fenêtre d'accueil
+        document.getElementById('accueil').style.display = 'none';
+
+        // Soumettre le formulaire réel (si nécessaire)
+        inscriptionForm.submit();
+        });
+    });
+    </script>
 </head>
 <body>
     <div class="container">
@@ -75,24 +91,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <?php if (isset($error_message)) { ?>
             <p><?php echo $error_message; ?></p>
         <?php } ?>
-        <form method="POST" action="login.php">
-            <label for="username">Adresse mail :</label>
+        <form id="inscriptionForm" method="POST" action="accueil.php">
+            <label for="email">Adresse mail :</label>
 
             <div class="item input-group flex-nowrap">
             <span class="input-group-text" id="addon-wrapping">@</span>
-            <input type="text" id="username" name="username" class="form-control" placeholder="Adresse mail" aria-label="Adresse mail" aria-describedby="addon-wrapping" required><br>
+            <input type="text" id="email" name="email" class="form-control" placeholder="Adresse mail" aria-label="Adresse mail" aria-describedby="addon-wrapping" required><br>
             </div>
 
             <label for="password">Mot de passe :</label>
 
             <div class="item input-group flex-nowrap">
-            <input class="form-control" type="password" id="mdp" name="password" placeholder="Mot de passe" aria-label="Mot de passe" aria-describedby="addon-wrapping" required><br>
+            <input class="form-control" type="password" id="password" name="password" placeholder="Mot de passe" aria-label="Mot de passe" aria-describedby="addon-wrapping" required><br>
             </div>
 
             <label for="passwordConfirm">Confirmer le mot de passe :</label>
 
             <div class="item input-group flex-nowrap">
-            <input class="form-control" type="passwordConfirm" id="mdp" name="passwordConfirm" placeholder="Confirmer le mot de passe" aria-label="Confirmer le mot de passe" aria-describedby="addon-wrapping" required><br>
+            <input class="form-control" type="password" id="passwordConfirm" name="passwordConfirm" placeholder="Confirmer le mot de passe" aria-label="Confirmer le mot de passe" aria-describedby="addon-wrapping" required><br>
             </div>
 
             <input type="submit" class="item btn btn-secondary btn-lg" value="Inscription">
