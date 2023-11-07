@@ -1,34 +1,32 @@
 <?php
-// Informations de connexion à la base de données
-$host = "localhost"; // Nom d'hôte du serveur MySQL
-$username = "root"; // Nom d'utilisateur MySQL
-$password = ""; // Mot de passe MySQL
-$database = "cmd"; // Nom de la base de données
+// Assurez-vous que le fichier de connexion à la base de données est inclus ici
+include('C:\laragon\www\CMS\sql\ConnectionSQL.php');
 
-// Connexion à la base de données
-$connection = mysqli_connect($host, $username, $password, $database);
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Récupérez les données du formulaire
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-// Vérifier la connexion
-if (!$connection) {
-    die("La connexion à la base de données a échoué : " . mysqli_connect_error());
-}
+    // Recherchez l'utilisateur dans la base de données par son adresse e-mail
+    $query = $db->prepare("SELECT * FROM users WHERE email = :email");
+    $query->bindParam(':email', $email);
+    $query->execute();
+    $user = $query->fetch(PDO::FETCH_ASSOC);
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Récupérer les données du formulaire
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-
-    // Vérifier l'authentification (vous devez implémenter la logique d'authentification)
-    // Par exemple, vous pouvez comparer les informations avec celles de votre base de données
-    if (verifyAuthentication($username, $password)) {
-        // L'authentification est réussie, rediriger l'utilisateur vers une page sécurisée
-        header("Location: /admin");
-        exit();
+    if ($user) {
+        // L'utilisateur a été trouvé, vérifiez le mot de passe
+        if (password_verify($password, $user['password'])) {
+            // Le mot de passe est correct, l'utilisateur est connecté
+             $_COOKIE['user_id'] = $user['id'];
+            header('C:\laragon\www\CMS\pages\page.php');
+            exit();
+        } else {
+            $error_message = "Mot de passe incorrect.";
+        }
     } else {
-        $error_message = "Nom d'utilisateur ou mot de passe incorrect.";
+        $error_message = "Adresse e-mail non trouvée.";
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -67,25 +65,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             padding: 10px;
         }
     </style>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const connexionForm = document.getElementById('connexionForm');
+
+    connexionForm.addEventListener('submit', function(event) {
+      //IF erreur
+        // Empêcher l'envoi du formulaire par défaut
+      //event.preventDefault();
+
+      // Modifier le contenu du paragraph
+    });
+    });
+    </script>
+
 </head>
 <body>
     <div class="container">
         <h2>Connexion</h2>
-        <?php if (isset($error_message)) { ?>
-            <p><?php echo $error_message; ?></p>
-        <?php } ?>
-        <form method="POST" action="login.php">
-            <label for="username">Adresse mail :</label>
+
+        <form id="connexionForm" method="POST" action="page.php">
+            <label for="email">Adresse mail :</label>
 
             <div class="item input-group flex-nowrap">
             <span class="input-group-text" id="addon-wrapping">@</span>
-            <input type="text" id="username" name="username" class="form-control" placeholder="Adresse mail" aria-label="Adresse mail" aria-describedby="addon-wrapping" required><br>
+            <input type="text" id="email" name="email" class="form-control" placeholder="Adresse mail" aria-label="Adresse mail" aria-describedby="addon-wrapping" required><br>
             </div>
 
             <label for="password">Mot de passe :</label>
 
             <div class="item input-group flex-nowrap">
-            <input class="form-control" type="password" id="mdp" name="password" placeholder="Mot de passe" aria-label="Mot de passe" aria-describedby="addon-wrapping" required><br>
+            <input class="form-control" type="password" id="password" name="password" placeholder="Mot de passe" aria-label="Mot de passe" aria-describedby="addon-wrapping" required><br>
             </div>
 
             <input type="submit" class="item btn btn-secondary btn-lg" value="Connexion">
@@ -93,27 +103,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 </body>
 </html>
-
-<?php
-// Fonction pour vérifier l'authentification (exemple simplifié, adaptez-la à vos besoins)
-function verifyAuthentication($username, $password) {
-    // Inclure le fichier de configuration de la base de données
-    include("sql/ConnectionSQL.php");
-
-    // Vous devez écrire la logique d'authentification ici
-    // Par exemple, exécutez une requête SQL pour vérifier si l'utilisateur existe dans la base de données et si le mot de passe est correct
-
-    // Si l'authentification réussit, retournez true
-    // Sinon, retournez false
-
-    // Exemple basique de vérification d'authentification
-    $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-    $result = mysqli_query($connection, $sql);
-
-    if ($result && mysqli_num_rows($result) == 1) {
-        return true;
-    } else {
-        return false;
-    }
-}
-?>
