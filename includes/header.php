@@ -9,7 +9,6 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
 
-    <body>
         <header>
             <nav class="navbar">
                 <div class="logo">
@@ -28,7 +27,7 @@
                             <a class="nav-link" href="#">Articles</a>
                         </li>
                     </ul>
-                    <a href="/admin" class="btn btn-primary">Admin</a>
+                    <a href="../admin/index.php" class="btn btn-primary">Admin</a>
 
                 </div>
             </nav>

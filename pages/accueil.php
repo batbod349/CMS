@@ -1,6 +1,5 @@
 
 <?php require '../includes/header.php'; ?>
-
 <body>
 
     <!--<div class="welcome-section">
@@ -79,5 +78,3 @@
 </body>
 
 <?php require '../includes/footer.php'; ?>
-
-</html>
