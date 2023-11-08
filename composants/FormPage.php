@@ -55,7 +55,7 @@
     </style>
 </head>
 <body>
-    <form method="post" action="process_form.php" enctype="multipart/form-data">
+    <form method="post" action="../pages/process_form.php" enctype="multipart/form-data">
         <label for="title">Le titre du site:</label>
         <input type="text" id="title" name="title" required>
 
