@@ -72,13 +72,14 @@
     require '../sql/ConnectionSQL.php';
     require 'PageManager.php';
     $pageManager=new PageManager($db);
-    $page_data = $pageManager->getPageById(2);
+    $page_data = $pageManager->getPageById(3);
     $title = '';
     $content = '';
 
     if (!empty($page_data)) {
         $title = isset($page_data['title']) ? htmlspecialchars($page_data['title']) : '';
         $content = isset($page_data['content']) ? htmlspecialchars($page_data['content']) : '';
+        $img = isset($page_data['image']) ? htmlspecialchars($page_data['image']) : '';
         // Autres données à initialiser si nécessaire
         
     } else {
@@ -96,13 +97,16 @@
         <label for="photo">Télécharger une nouvelle photo:</label>
         <input type="file" id="new_photo" name="new_photo" accept="image/*">
 
+        <label for="photo_old">ancienne image:</label>
+        <img  id="photo_old" name="photo_old" src="<?php echo $img ?>" width="30%" height="30%"/> 
+
         <div class="button-container">
-            <input type="submit" name="update_page" value="Enregistrer">
-            <input type="button" value="Annuler">
+            <input type="submit" name="save" value="Enregistrer">
+            <input type="button" value="Annuler" >
         </div>
 
-        <input type="hidden" name="page_id" value="2">
+        <input type="hidden" name="page_id" value="3" >
 
     </form>
 </body>
-</html>
+</html> 
