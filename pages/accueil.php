@@ -10,7 +10,9 @@
     </head>
     <body>
 
-        <?php require '../composants/ajoutComp.php'; ?>
 
     </body>
+
 </html>
+
+<?php require '../includes/footer.php'; ?>
