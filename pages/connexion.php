@@ -2,7 +2,7 @@
 if (isset($_COOKIE['connected'])) {
     header('Location: page.php');
 }
-//setcookie("connected", false,  - time()+(60*60*24*30) );
+
 
 // Assurez-vous que le fichier de connexion à la base de données est inclus ici
 include('C:\laragon\www\CMS\sql\ConnectionSQL.php');
