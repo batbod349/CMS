@@ -18,7 +18,7 @@
                     <a class="navbar-brand" href="#">CMS MASTER</a>
                     <ul class="nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="C:\laragon\www\CMS\pages\accueil.php" >Accueil</a>
+                            <a class="nav-link" href="http://localhost/CMS/pages/accueil.php" >Accueil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Catégories</a>
@@ -30,14 +30,23 @@
                     <nav class="Wrapper">
                         <ul class="menuroulant">
                             <li>
-                                <a href="http://localhost/CMS/pages/connexion.php">Login</a>
+                                <a href="">
+                                    <img src="../assets/utilisateur.png" alt="Connexion" width="35" height="35">
+                                </a>
                                 <ul class="sousmenu">
+                                <?php
+                                if (isset($_COOKIE['connected'])) {?>
                                     <li>
-                                        <a href="#">Profile</a>
+                                        <a href="http://localhost/CMS/admin/index.php">Administration</a>
                                     </li>
                                     <li>
                                         <a href="http://localhost/CMS/pages/logout.php">Déconnexion</a>
                                     </li>
+                                <?php } else {?>
+                                    <li>
+                                        <a href="http://localhost/CMS/pages/connexion.php">Connexion</a>
+                                    </li>
+                                    <?php }?>
                                 </ul>
                             </li>
                         </ul>

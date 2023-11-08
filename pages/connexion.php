@@ -1,6 +1,6 @@
 <?php
 if (isset($_COOKIE['connected'])) {
-    header('Location: page.php');
+    header('Location: accueil.php');
 }
 
 
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (password_verify($password, $user['password'])) {
             // Définir un cookie pour indiquer que l'utilisateur est connecté
             setcookie("connected", true, time()+(60*60*24*30) ); // Le cookie expire dans 1 minute
-            header('Location: page.php');
+            header('Location: accueil.php');
             exit();
         }
         else {
