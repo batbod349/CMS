@@ -1,4 +1,9 @@
 <?php
+if (isset($_COOKIE['connected'])) {
+    header('Location: page.php');
+}
+//setcookie("connected", false,  - time()+(60*60*24*30) );
+
 // Assurez-vous que le fichier de connexion à la base de données est inclus ici
 include('C:\laragon\www\CMS\sql\ConnectionSQL.php');
 
@@ -16,17 +21,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($user) {
         // L'utilisateur a été trouvé, vérifiez le mot de passe
         if (password_verify($password, $user['password'])) {
-            // Le mot de passe est correct, l'utilisateur est connecté
-             $_COOKIE['user_id'] = $user['id'];
-            header('C:\laragon\www\CMS\pages\page.php');
+            // Définir un cookie pour indiquer que l'utilisateur est connecté
+            setcookie("connected", true, time()+(60*60*24*30) ); // Le cookie expire dans 1 minute
+            header('Location: page.php');
             exit();
-        } else {
+        }
+        else {
             $error_message = "Mot de passe incorrect.";
         }
-    } else {
+    }
+    else {
         $error_message = "Adresse e-mail non trouvée.";
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Connexion</title>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <style>
@@ -69,13 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     document.addEventListener('DOMContentLoaded', function() {
     const connexionForm = document.getElementById('connexionForm');
 
-    connexionForm.addEventListener('submit', function(event) {
-      //IF erreur
-        // Empêcher l'envoi du formulaire par défaut
-      //event.preventDefault();
-
-      // Modifier le contenu du paragraph
-    });
+    connexionForm.addEventListener('submit', function(event) {  });
     });
     </script>
 
@@ -84,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="container">
         <h2>Connexion</h2>
 
-        <form id="connexionForm" method="POST" action="page.php">
+        <form id="connexionForm" method="POST" action="connexion.php">
             <label for="email">Adresse mail :</label>
 
             <div class="item input-group flex-nowrap">
