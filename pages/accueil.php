@@ -2,8 +2,7 @@
 
     <body>
 
-        <?php require '../composants/ajoutComp.php'; ?>
 
     </body>
 
-    <?php require '../includes/footer.php'; ?>
+<?php require '../includes/footer.php'; ?>
