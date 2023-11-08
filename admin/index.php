@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Admin</title>
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
-</head>
+<?php require '../includes/header.php'; ?>
+
 <body>
-    <!-- Le contenu de votre page -->
+
 </body>
-</html>
+
+<?php require '../includes/footer.php'; ?>

@@ -358,12 +358,9 @@ bodyCo {
 .menuroulant li a:link, .menuroulant li a:visited {
   display: block;
   color: #FFFFFF;
-  background-color: #293245;
   padding: 6px 10px;
-  border: 1px solid #FFFFFF;
   text-align: center;
   text-decoration: none;
-  width: 150px;
   border-radius: 10px;
 }
 
@@ -380,6 +377,7 @@ bodyCo {
   position: absolute;
   top: 100%;
   left: 0;
+  list-style-type: none; /* Supprime les puces de liste */
 }
 
 .menuroulant li:hover .sousmenu {
