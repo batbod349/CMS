@@ -72,7 +72,7 @@
     require '../sql/ConnectionSQL.php';
     require 'PageManager.php';
     $pageManager=new PageManager($db);
-    $page_data = $pageManager->getPageById(3);
+    $page_data = $pageManager->getPageById($_GET['p']);
     $title = '';
     $content = '';
 
@@ -87,7 +87,7 @@
     }
     ?>
 
-    <form method="post" action="../pages/update_page.php" enctype="multipart/form-data">
+    <form method="post" action="../pages/update_page.php?p=<?php $_GET['p'] ?>" enctype="multipart/form-data">
         <label for="title">Le titre du site:</label>
         <input type="text" id="title" name="title" value="<?php echo $title ?>" required>
 
@@ -105,7 +105,7 @@
             <input type="button" value="Annuler" >
         </div>
 
-        <input type="hidden" name="page_id" value="3" >
+        <input type="hidden" name="page_id" value="<?php $_GET['p']?>" >
 
     </form>
 </body>

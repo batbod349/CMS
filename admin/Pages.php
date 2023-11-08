@@ -18,14 +18,14 @@ $req = $db->query($sql);
         </tr>
     </thead>
     <tbody>
-            <? while($row = $req->fetch()) { ?>
+            <?php while($row=$req->fetch()) { ?>
      <tr>
-            <td><? echo $row['Id']; ?></td>
-            <td><? echo $row['Title']; ?></td>
-            <td><button name="modif"class="">modification</button></td>
-            <td><button name="supre" class="">supression</button></td>
+            <td><?php echo $row['Id']; ?></td>
+            <td><?php echo $row['Title']; ?></td>
+            <td><a href="../pages/Editpage.php?p=<?php echo $row['Id'];?>"><button name="modif"class="">modification</button></a></td>
+            <td><a href="../composants/delectpage.php?p=<?php echo $row['Id'];?>"><button name="supre" class="">supression</button></a></td>
      </tr>
-        <? }   ?>
+        <?php }   ?>
     </tbody>
     </table>
 </body>
