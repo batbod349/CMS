@@ -1,28 +1,31 @@
 
 <?php require '../includes/header.php'; ?>
-
-<?php require '../sql/ConnectionSQL.php'; ?>
-
-
 <body>
 
-    <div class="welcome-section">
+    <!--<div class="welcome-section">
         <h2>Bienvenue sur ...</h2>
         <p>Choisissez votre modèle de page et modifiez le selon vos envies.</p>
-    </div>
+    </div>-->
 
     <div class="container-pages">
-        <?php $sql = "SELECT * FROM page";
-        foreach ($db->query($sql) as $row)
-        { ?>
-            <div class="page">
-                <a href = "page.php?p= <?php echo $row['Id']; ?>">
-                    <img src="<?php echo $row['image']; ?>" alt="" width="250px" height="200px">
-                    <h6><?php echo $row['Title']; ?></h6>
-                </a>
-            </div> <?php
-        } 
-        ?>
+        <div class="page1">
+            <img src="e1.jpg" alt="" width="250px" height="200px">
+            <h6>page 1</h6>
+        </div>
+        <div class="page2">
+            <img src="/Applications/MAMP/htdocs/cms/banque d'image/Unknown.jpg" width="250px" height="200px">
+            <h6>page 2</h6>
+        </div>
+        <div class="page3">
+            <img src="e3.jpg" alt="" width="250px" height="250px">
+            <h6>page 3</h6>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="buttCréer">
+            <button onclick="window.location.href='createPage.php'"><span>Créer une page</span></button>
+        </div>
     </div>
 
     <style>
@@ -35,7 +38,9 @@
             margin: 20px;
         }
 
-        .page {
+        .container-pages .page1,
+        .container-pages .page2,
+        .container-pages .page3 {
             text-align: center;
             padding: 10px;
         }
