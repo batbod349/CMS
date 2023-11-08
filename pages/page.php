@@ -3,7 +3,7 @@ include('../includes/header.php');
 require '../sql/ConnectionSQL.php';
 require '../composants/PageManager.php';
 $pageManager=new PageManager($db);
-$page_data = $pageManager->getPageById(3);
+$page_data = $pageManager->getPageById($_GET['p']);
 $title = '';
 $content = '';
 
