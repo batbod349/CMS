@@ -1,9 +1,7 @@
 <?php
 require '../sql/ConnectionSQL.php';
 ?>
-<!DOCTYPE html>
-<html>
-<head>
+
     <style>
         /* Style pour l'affichage des données */
         body {
@@ -16,7 +14,7 @@ require '../sql/ConnectionSQL.php';
             padding: 20px;
         }
     </style>
-</head>
+
 <body>
     <div class="container">
         <h1>Données soumises depuis le formulaire :</h1>

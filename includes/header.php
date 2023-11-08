@@ -9,7 +9,6 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
 
-    <body>
         <header>
             <nav class="navbar">
                 <div class="logo">
@@ -19,7 +18,7 @@
                     <a class="navbar-brand" href="#">CMS MASTER</a>
                     <ul class="nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#" >Accueil</a>
+                            <a class="nav-link" href="C:\laragon\www\CMS\pages\accueil.php" >Accueil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Catégories</a>
@@ -28,8 +27,21 @@
                             <a class="nav-link" href="#">Articles</a>
                         </li>
                     </ul>
-                    <a href="../admin/index.php" class="btn btn-primary">Admin</a>
-
+                    <nav class="Wrapper">
+                        <ul class="menuroulant">
+                            <li>
+                                <a href="http://localhost/CMS/pages/connexion.php">Login</a>
+                                <ul class="sousmenu">
+                                    <li>
+                                        <a href="#">Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://localhost/CMS/pages/logout.php">Déconnexion</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </nav>
         </header>

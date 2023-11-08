@@ -7,8 +7,9 @@ body nav .nav-link {
 }
 
 .navbar {
-    background-size: cover;
-    padding: 20px
+  background-image: url('../assets/fond-footer.png');
+  background-size: cover;
+  padding: 20px
 }
 
 .logo {
@@ -20,6 +21,25 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+    background-image: url("../assets/fond-footer.png");
+    background-size: cover;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+#header {
+    background-color: #0925dc;
+}
+
+
+.body.button{
+    left: 0;
+    right: 0;
+    text-align: right;
+    border: #0925dc;
 }
 
 .cadre-vide {
@@ -30,7 +50,89 @@ footer {
     /* Autres styles CSS au besoin */
 }
 
-.conteneur-avec-bordure {
+.header .profile{
+    cursor: pointer;
+    font-size: 30px;
+    width: 15%;
+    padding-left: 10px; 
+    color: black;
+    padding-bottom: 10px;
+}
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.container .item_1{
+    
+    width: 50%;
+}
+.container .item_1 .para{
+    margin-top: 20px;
+    font-size: 13px;
+}
+.container .item_1 .but{
+    margin-top: 50px;
+}
+.container .item_1 .but button{
+    width: 200px;
+    outline: none;
+    text-decoration: none;
+    height: 40px;
+    border-radius: 20px;
+    padding: 4px;
+    background-color: #0925dc;
+    border: none;
+}
+.container .item_2{
+    
+    width: 50%;
+}
+.cont{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.cont .e1 h6{
+    margin-top: 7px;
+ }
+.cont .e2 h6    {
+    margin-top: 7px;
+ }
+
+.cont .e4{
+    width: 250px;
+    height: 200px;
+ }
+ .cont .e4 p{
+    font-size: 10px;
+    color: gray;
+ }
+ .cont .e4 .but button{
+    width: 200px;
+    outline: none;
+    text-decoration: none;
+    height: 40px;
+    border-radius: 20px;
+    padding: 4px;
+    background-color: #1009dc;
+    border: none;
+ }
+
+ .container .rhead{
+    margin-top: 15px;
+ }
+ .container .rcont{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    
+ }
+  .container .rcont .r1{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -68,4 +170,90 @@ footer {
 
 .liste-de-pages a:hover {
     color: #4583A2;
+}
+
+bodyCo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.containerCo {
+  width: 350px;
+  height: 350px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 10px;
+  display: flex; /* Utilisation de flexbox pour centrer verticalement */
+  flex-direction: column; /* Les éléments seront alignés verticalement */
+  justify-content: center; /* Centrer verticalement les éléments */
+  align-items: center; /* Centrer horizontalement les éléments */
+  border-radius: 20px; /* Ajout de bords arrondis */
+}
+.itemCo {
+  margin: 5px; /* Espacement de 5px entre les éléments */
+  text-align: center;
+  padding: 10px;
+}
+
+
+.menuroulant {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menuroulant li {
+  position: relative;
+}
+
+.menuroulant li a:link, .menuroulant li a:visited {
+  display: block;
+  color: #FFFFFF;
+  background-color: #293245;
+  padding: 6px 10px;
+  border: 1px solid #FFFFFF;
+  text-align: center;
+  text-decoration: none;
+  width: 150px;
+  border-radius: 10px;
+}
+
+.menuroulant li a:hover {
+  background-color: #199BD2;
+}
+
+.menuroulant li a:active {
+  background-color: #808080;
+}
+
+.menuroulant .sousmenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+
+.menuroulant li:hover .sousmenu {
+  display: block;
+}
+
+.menuroulant .sousmenu li {
+  border-top: 1px solid transparent;
+  border-right: 1px solid transparent;
+  border-radius: 10px;
+}
+
+.menuroulant .sousmenu li a:link, .menuroulant .sousmenu li a:visited {
+  display: block;
+  color: #FFFFFF;
+  text-decoration: none;
+  background-color: #808080;
+}
+
+.menuroulant .sousmenu li a:hover {
+  background-color: #199BD2;
 }
