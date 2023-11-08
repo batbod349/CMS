@@ -1,42 +1,3 @@
-.Wrapper
-{
-    width: 1000px;
-}
-
-ul
-{
-    list-style: none;
-}
-
-li
-{
-    display: inline;
-
-}
-
-/* Styles pour la section de bienvenue */
-.welcome-section {
-    text-align: center; 
-    position: absolute;
-    top: 50%; 
-    left: 0;
-    right: 10;
-    transform: translateY(-50%); /* Ajuster la position verticale */
-}
-.ma-liste {
-    display: none; /* Cache la liste par dÃ©faut */
-}
-
-/* Styles pour le texte "Bienvenue sur CMS Master" en bleu */
-.welcome-section h2 {
-    color: blue;
-    align-items: center;
-    left: 0;
-    right: 0;
-
-
-}
-
 body nav .nav-link {
     color: #ffffff; /* Couleur de texte blanche */
 }
@@ -46,7 +7,6 @@ body nav .nav-link {
 }
 
 .navbar {
-    background-image: url("../assets/fond-footer.png");
     background-size: cover;
     padding: 20px
 }
@@ -57,6 +17,11 @@ body nav .nav-link {
 }
 
 footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+=======
     background-image: url("../assets/fond-footer.png");
     background-size: cover;
     color: #fff;
@@ -354,3 +319,4 @@ footer {
     background-position: 430px center;
     background-repeat: no-repeat;
 }
+
