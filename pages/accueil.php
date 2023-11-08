@@ -1,39 +1,16 @@
+<?php require '../includes/header.php'; ?>
+
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Accueil</title>
-    <link rel="stylesheet" type="text/css" href="../css/style.scss">
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
+    <head>
+        <meta charset="UTF-8">
+        <title>Accueil</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-</head>
-<body>
-    <header>
-        <script>
-            feather.replace()
-        </script>
+    </head>
+    <body>
 
-         <div class="header">  
-            <nav class="navbar">
-                <div class="container">
-                    <a class="navbar-brand" href="#">Mon Site</a>
-                    <ul class="nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Accueil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Catégories</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Articles</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </header>
+        <?php require '../composants/ajoutComp.php'; ?>
 
-    <?php require '../composants/ajoutComp.php'; ?>
-
-</body>
+    </body>
 </html>

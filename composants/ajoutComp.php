@@ -24,12 +24,17 @@
                 $("#liste-deroulante").toggle(); // Cette ligne permet d'afficher ou masquer la liste déroulante
             });
 
+            $("#icone-button").click(function () {
+                const nouveauBouton = $("<button>").text("Bouton ajouté");
+                $("#liste-deroulante").append(nouveauBouton);
+            });
+
             // Fermer la liste déroulante si l'utilisateur clique en dehors
-           <!-- $(document).click(function (e) {
+            $(document).click(function (e) {
                 if (!$(e.target).is("#icone-button") && !$(e.target).is("#liste-deroulante")) {
                     $("#liste-deroulante").hide(); // Cela masque la liste déroulante si l'utilisateur clique en dehors
                 }
-            }); -->
+            }); 
         });
     </script>
 
@@ -76,7 +81,7 @@
 
 </head>
 
-<body class="xyz">
+<body>
 
     <!-- Le contenu de votre page -->
 
@@ -96,6 +101,11 @@
         <option value="Option 2">test 2</option>
         <option value="Option 3">test 3</option>
     </select>
+    
+    <button id="icone-button" class="btn btn-secondary">Cliquez pour ajouter un bouton</button>
+    <div id="liste-deroulante" style="display: none;">
+        <button id="nouveau-bouton" class="btn btn-primary">Nouveau bouton</button>
+    </div>
 
 </body>
 
