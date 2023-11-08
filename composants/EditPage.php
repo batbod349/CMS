@@ -87,7 +87,7 @@
     }
     ?>
 
-    <form method="post" action="update_page.php" enctype="multipart/form-data">
+    <form method="post" action="../pages/update_page.php" enctype="multipart/form-data">
         <label for="title">Le titre du site:</label>
         <input type="text" id="title" name="title" value="<?php echo $title ?>" required>
 
