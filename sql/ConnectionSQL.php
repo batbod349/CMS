@@ -6,9 +6,7 @@ $pass = "";
 try
 {
     $db = new PDO ('mysql:host=localhost;dbname=cmd',$user,$pass);
-    $query = 'SELECT * FROM users';
-    // /µ-
-    // foreach ($db->query($query) as $row)
+    // foreach($db->query('SELECT*FROM users') as $row)
     // {
     //     print_r($row);
     // }
