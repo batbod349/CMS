@@ -1,35 +1,40 @@
 <?php
+if (isset($_COOKIE['connected'])) {
+    header('Location: page.php');
+}
+//setcookie("connected", false,  - time()+(60*60*24*30) );
+
 // Assurez-vous que le fichier de connexion à la base de données est inclus ici
 include('C:\laragon\www\CMS\sql\ConnectionSQL.php');
 
-// Vérifie si le formulaire a été soumis
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Récupérez les données du formulaire
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $passwordConfirm = $_POST['passwordConfirm'];
 
-    // Vérifiez si les mots de passe correspondent
-    if ($password !== $passwordConfirm) {
-        $error_message = "Les mots de passe ne correspondent pas.";
-    } else {
-        // Hachez le mot de passe avant de le stocker en toute sécurité dans la base de données
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    // Recherchez l'utilisateur dans la base de données par son adresse e-mail
+    $query = $db->prepare("SELECT * FROM users WHERE email = :email");
+    $query->bindParam(':email', $email);
+    $query->execute();
+    $user = $query->fetch(PDO::FETCH_ASSOC);
 
-        // Insérez l'utilisateur dans la base de données
-        $query = $db->prepare("INSERT INTO users (email, password) VALUES (:email, :password)");
-        $query->bindParam(':email', $email);
-        $query->bindParam(':password', $hashed_password);
-
-        if ($query->execute()) {
-            // L'inscription a réussi, redirigez l'utilisateur vers une page de confirmation ou de connexion
-            header('C:\laragon\www\CMS\pages\accueil.php');
+    if ($user) {
+        // L'utilisateur a été trouvé, vérifiez le mot de passe
+        if (password_verify($password, $user['password'])) {
+            // Définir un cookie pour indiquer que l'utilisateur est connecté
+            setcookie("connected", true, time()+(60*60*24*30) ); // Le cookie expire dans 1 minute
+            header('Location: page.php');
             exit();
-        } else {
-            $error_message = "Une erreur s'est produite lors de l'inscription.";
+        }
+        else {
+            $error_message = "Mot de passe incorrect.";
         }
     }
+    else {
+        $error_message = "Adresse e-mail non trouvée.";
+    }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         .container {
             width: 350px;
-            height: 430px;
+            height: 350px;
             background-color: #f0f0f0;
             border: 1px solid #ccc;
             text-align: center;
@@ -69,28 +74,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </style>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const inscriptionForm = document.getElementById('inscriptionForm');
+    const connexionForm = document.getElementById('connexionForm');
 
-        inscriptionForm.addEventListener('submit', function(event) {
-        // Empêcher l'envoi du formulaire par défaut
-        event.preventDefault();
-
-        // Masquer la fenêtre d'accueil
-        document.getElementById('accueil').style.display = 'none';
-
-        // Soumettre le formulaire réel (si nécessaire)
-        inscriptionForm.submit();
-        });
+    connexionForm.addEventListener('submit', function(event) {  });
     });
     </script>
+
 </head>
 <body>
     <div class="container">
-        <h2>Inscription</h2>
-        <?php if (isset($error_message)) { ?>
-            <p><?php echo $error_message; ?></p>
-        <?php } ?>
-        <form id="inscriptionForm" method="POST" action="accueil.php">
+        <h2>Connexion</h2>
+
+        <form id="connexionForm" method="POST" action="connexion.php">
             <label for="email">Adresse mail :</label>
 
             <div class="item input-group flex-nowrap">
@@ -104,13 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input class="form-control" type="password" id="password" name="password" placeholder="Mot de passe" aria-label="Mot de passe" aria-describedby="addon-wrapping" required><br>
             </div>
 
-            <label for="passwordConfirm">Confirmer le mot de passe :</label>
-
-            <div class="item input-group flex-nowrap">
-            <input class="form-control" type="password" id="passwordConfirm" name="passwordConfirm" placeholder="Confirmer le mot de passe" aria-label="Confirmer le mot de passe" aria-describedby="addon-wrapping" required><br>
-            </div>
-
-            <input type="submit" class="item btn btn-secondary btn-lg" value="Inscription">
+            <input type="submit" class="item btn btn-secondary btn-lg" value="Connexion">
         </form>
     </div>
 </body>

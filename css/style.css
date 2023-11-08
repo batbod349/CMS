@@ -291,4 +291,18 @@ footer {
   outline: none;
 background-color: black;
 color: white;
+=======
+.Wrapper
+{
+    width: 1000px;
+}
+
+ul
+{
+    list-style: none;
+}
+
+li
+{
+    display: inline;
 }
