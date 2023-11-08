@@ -25,11 +25,11 @@
             });
 
             // Fermer la liste déroulante si l'utilisateur clique en dehors
-            $(document).click(function (e) {
+           <!-- $(document).click(function (e) {
                 if (!$(e.target).is("#icone-button") && !$(e.target).is("#liste-deroulante")) {
                     $("#liste-deroulante").hide(); // Cela masque la liste déroulante si l'utilisateur clique en dehors
                 }
-            });
+            }); -->
         });
     </script>
 
@@ -96,7 +96,6 @@
         <option value="Option 2">test 2</option>
         <option value="Option 3">test 3</option>
     </select>
-
 
 </body>
 
