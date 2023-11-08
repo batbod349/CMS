@@ -26,4 +26,9 @@
         <!-- Le contenu de votre page -->
 
     </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+
+>>>>>>> 07fb92b70f5c133ac25a7d352051a1cc6dca49cb
