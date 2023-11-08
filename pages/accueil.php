@@ -2,8 +2,8 @@
 
     <body>
 
-        <?php require '../composants/ajoutComp.php'; ?>
+        <?php require '../composants/comboLogin.php'; ?>
 
     </body>
 
-    <?php require '../includes/footer.php'; ?>
+<?php require '../includes/footer.php'; ?>

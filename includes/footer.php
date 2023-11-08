@@ -16,6 +16,5 @@
             <a href="https://www.instagram.com/"><img src="../assets/instagram.png" alt="Instagram"></a>
         </div>
     </footer>
-</body>
 </html>
 
