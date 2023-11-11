@@ -81,7 +81,7 @@
         $content = isset($page_data['content']) ? htmlspecialchars($page_data['content']) : '';
         $img = isset($page_data['image']) ? htmlspecialchars($page_data['image']) : '';
         // Autres données à initialiser si nécessaire
-        
+
     } else {
         echo "Page non trouvée.";
     }

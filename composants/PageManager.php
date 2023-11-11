@@ -35,10 +35,10 @@ public function updatePage($page_id, $title, $content, $image) {
         $stmt->bindParam(':new_content', $content);
         $stmt->bindParam(':new_image', $image);
         $stmt->bindParam(':page_id', $page_id, PDO::PARAM_INT);
-        
+
         // Execute the query
         $result = $stmt->execute();
-        
+
         if ($result) {
             return true; // Return true to indicate success
         } else {

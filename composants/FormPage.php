@@ -18,7 +18,7 @@
             border: 1px solid #ccc;
             border-radius: 10px;
             background-color: #f5f5f5;
-            
+
         }
 
         label {

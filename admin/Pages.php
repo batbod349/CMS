@@ -1,7 +1,7 @@
 <?php
  include('../sql/ConnectionSQL.php');
- $sql = 'SELECT * FROM page';   
-$req = $db->query($sql);   
+ $sql = 'SELECT * FROM page';
+$req = $db->query($sql);
 ?>
 <!DOCTYPE html>
 <html>

@@ -3,7 +3,6 @@ if (isset($_COOKIE['connected'])) {
     header('Location: accueil.php');
 }
 
-
 // Assurez-vous que le fichier de connexion à la base de données est inclus ici
 include('C:\laragon\www\CMS\sql\ConnectionSQL.php');
 require '../includes/header.php';
@@ -44,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     connexionForm.addEventListener('submit', function(event) {  });
     });
     </script>
-<bodyCo>
+<div class="bodyCo">
     <div class="containerCo">
         <h2>Connexion</h2>
 
@@ -65,6 +64,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input type="submit" class="itemCo btn btn-secondary btn-lg" value="Connexion">
         </form>
     </div>
-</bodyCo>
+</div>
 
 <?php require '../includes/footer.php'; ?>
