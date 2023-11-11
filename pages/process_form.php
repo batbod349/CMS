@@ -59,8 +59,9 @@ require '../sql/ConnectionSQL.php';
             if ($stmt->execute()) 
             {
                  echo "Données insérées avec succès dans la base de données.";
-            } 
-            else 
+                 header('Location: page.php');
+            }
+            else
             {
                  echo "Erreur lors de l'insertion des données dans la base de données.";
             }

@@ -1,5 +1,5 @@
 <?php
-include('../includes/header.php');
+require '../includes/header.php';
 require '../sql/ConnectionSQL.php';
 require '../composants/PageManager.php';
 $pageManager=new PageManager($db);

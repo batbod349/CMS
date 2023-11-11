@@ -212,12 +212,12 @@ footer {
   color: #4583A2;
 }
 
-bodyCo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
+.bodyCo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
 }
 
 .containerCo {
